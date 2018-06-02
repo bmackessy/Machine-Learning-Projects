@@ -292,8 +292,8 @@ def generateRules(minConfidence, associations, table):
 
     for association in associations:
         if (len(association) == 1):
-            print "Should have size one"
-            print association
+            #print "Should have size one"
+            #print association
             pass
         else:
             myPermutations = itertools.permutations(association, len(association))
@@ -304,17 +304,17 @@ def generateRules(minConfidence, associations, table):
                 for i in range(len(perm)):
                     if (i == len(perm)-1):
                         rightHand.append(perm[i])
-                        print "rightHand"
-                        print rightHand
+                        #print "rightHand"
+                        #print rightHand
                     else:
                         leftHand.append(perm[i])
-                        print "leftHand"
-                        print leftHand
+                        #print "leftHand"
+                        #print leftHand
                 con = getConfidence(table, leftHand, rightHand)
 
                 if ((len(perm)-2) == 0):
-                    print "Confidence"
-                    print con
+                    #print "Confidence"
+                    #print con
                     if (con > minConfidence):
                         newList.append(leftHand)
                         newList.append(rightHand)
@@ -322,15 +322,15 @@ def generateRules(minConfidence, associations, table):
 
                 else:
                     for i in range(len(perm)-2):
-                        print "Should Never"
-                        print "Confidence"
-                        print con
+                        #print "Should Never"
+                        #print "Confidence"
+                        #print con
                         if (con > minConfidence):
                             newList.append(leftHand)
                             newList.append(rightHand)
                             allRules.append(newList)
-                            print leftHand
-                            print rightHand
+                            #print leftHand
+                            #print rightHand
                             rightHand.append(leftHand.pop())
                         else:
                             break
@@ -339,8 +339,8 @@ def generateRules(minConfidence, associations, table):
 
 
 def prettyPrint(rules):
-    for rule in rules:
-        print len(rule)
+    #for rule in rules:
+        #print len(rule)
 
     return 0
 
@@ -354,5 +354,6 @@ table = open_dataset_titanic()
 
 
 associations = generateAssociations(table, 0.25, 1)
+
 print generateRules(0.5, associations, table)
 
